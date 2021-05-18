@@ -1,0 +1,25 @@
+==8644== NVPROF is profiling process 8644, command: cuda_add.exe
+==8644== Profiling application: cuda_add.exe
+==8644== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  253.31ms         1  253.31ms  253.31ms  253.31ms  add(int, float*, float*)
+      API calls:   57.57%  253.45ms         1  253.45ms  253.45ms  253.45ms  cudaDeviceSynchronize
+                   24.95%  109.83ms         2  54.916ms  1.2263ms  108.61ms  cudaMallocManaged
+                   10.15%  44.678ms         1  44.678ms  44.678ms  44.678ms  cuDevicePrimaryCtxRelease
+                    6.81%  29.995ms         1  29.995ms  29.995ms  29.995ms  cudaLaunchKernel
+                    0.44%  1.9200ms         2  960.00us  716.60us  1.2034ms  cudaFree
+                    0.04%  177.20us        97  1.8260us     100ns  74.700us  cuDeviceGetAttribute
+                    0.04%  155.70us         1  155.70us  155.70us  155.70us  cuModuleUnload
+                    0.01%  25.500us         1  25.500us  25.500us  25.500us  cuDeviceTotalMem
+                    0.00%  11.800us         1  11.800us  11.800us  11.800us  cuDeviceGetPCIBusId
+                    0.00%  10.900us         2  5.4500us     200ns  10.700us  cuDeviceGet
+                    0.00%  1.3000us         3     433ns     200ns     800ns  cuDeviceGetCount
+                    0.00%     900ns         1     900ns     900ns     900ns  cuDeviceGetName
+                    0.00%     400ns         1     400ns     400ns     400ns  cuDeviceGetLuid
+                    0.00%     300ns         1     300ns     300ns     300ns  cuDeviceGetUuid
+
+==8644== Unified Memory profiling result:
+Device "GeForce GT 750M (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    2048  4.0000KB  4.0000KB  4.0000KB  8.000000MB  17.07190ms  Host To Device
+     384  32.000KB  32.000KB  32.000KB  12.00000MB  59.53010ms  Device To Host
