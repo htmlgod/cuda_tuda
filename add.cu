@@ -4,7 +4,9 @@
 // CUDA Kernel function to add the elements of two arrays on the GPU
 __global__
 void add(int n, float* x, float* y) {
-	for (int i = 0; i < n; i++) {
+	int index = threadIdx.x; // index of current thread within its block
+	int stride = blockDim.x; // number of threads in block
+	for (int i = index; i < n; i += stride) {
 		y[i] += x[i];
 	}
 }
@@ -23,7 +25,8 @@ int main(void) {
 		x[i] = 2.f;
 	}
 	// launching add() kernel, which invokes on the GPU
-	add<<<1, 1>>>(N, x, y);
+	// <<<n, m>>> -- m is number of threads in a thread block 
+	add<<<1, 256>>>(N, x, y);
 
 
 	// making CPU to wait until the kernel is done
